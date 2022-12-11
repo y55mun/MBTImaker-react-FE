@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ========================= files ========================= -->
+
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/result.css">
+    <script src="../javascript/default.js" defer></script>
+    <script src="../javascript/userResult.js" defer></script>
+    <script src="../javascript/comment.js" defer></script>
+
+    <!-- Crypto CDN 로드 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
+    <meta property="og:title" content="나의 영화 캐릭터 유형은?">
+    <meta property="og:url" content="./html/home.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://mbti-image-server.s3.ap-northeast-2.amazonaws.com/og_image.png">
+    <meta property="og:description" content="나의 MBTI 유형과 어울리는 캐릭터와 영화를 알아보세요!" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@https://github.com/MBTImaker">
+    <meta name="twitter:creator" content="@MBTImaker">
+    <meta name="twitter:title" content="나의 영화 캐릭터 유형은?">
+    <meta name="twitter:description" content="나의 MBTI 유형과 어울리는 캐릭터와 영화를 알아보세요!">
+    <meta name="twitter:image" content="https://mbti-image-server.s3.ap-northeast-2.amazonaws.com/og_image.png">
+
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+    <title>크리스마스에 영화 뭐 보지?</title>
+</head>
+
+<body>
+    <div class="l1">
+        <img src="../imgs/loading_ment.png" alt="영화캐릭터 분석중">
+    </div>
+
+    <!-- facebook -->
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- 하얀 영역 -->
+    <div class="b3">
+        <section class="r1">
+            <div class="t2">
+                <img class="subject"></img>
+                <img class="movie-title"></img>
+                <img class="movie-character"></img>
+                <img class="character-img"></img>
+            </div>
+
+            <span class="c1"></span>
+            <div class="f1">
+                <div class="f2"></div><div class="f2"></div><div class="f2"></div><div class="f2"></div><div class="f2"></div>
+                <div class="f2"></div><div class="f2"></div><div class="f2"></div><div class="f2"></div><div class="f2"></div>
+            </div>
+
+            <div class="p1"></div>
+
+            <!-- 환상의 케이 & 환장의 케미 -->
+            <div class="h1">
+                <div class="chemi good">
+                    <span class="chemi-title">환상의 케미</span>
+                    <img class="character-img"></img>
+                    <span class="movie-title"></span>
+                    <span class="movie-character"></span>
+                </div>
+                <div class="chemi bad">
+                    <span class="chemi-title">환장의 케미</span>
+                    <img class="character-img"></img>
+                    <span class="movie-title"></span>
+                    <span class="movie-character"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 나와 같은 유형 -->
+        <section class="likeMe">
+            <span class="subTitle">나와 같은 유형</span>
+            <div class="whiteBox">
+                <div class="movie-title"></div>
+                <div class="movie-character"></div>
+                <div class="imgAndGraph">
+                    <!-- img -->
+                    <img src="" alt="">
+                    <!-- graph -->
+                    <div id="likeMe" class="circular">
+                        <div class="inner"></div>
+                        <div class="outer"></div>
+                        <div class="numb">
+                            0%
+                        </div>
+                        <div class="numb-title">
+                            나와 같은 유형
+                        </div>
+                        <div class="circle">
+                            <div class="fixed-dot">
+                                <span></span>
+                            </div>
+                            <div class="dot">
+                                <span></span>
+                            </div>
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 가장 많이 나온 유형 -->
+        <section class="mostType">
+            <span class="subTitle">가장 많이 나온 유형</span>
+            <div class="whiteBox">
+                <div class="movie-title"></div>
+                <div class="movie-character"></div>
+                <div class="imgAndGraph">
+                    <!-- img -->
+                    <img src="" alt="">
+                    <!-- graph -->
+                    <div id="mostType" class="circular">
+                        <div class="inner"></div>
+                        <div class="outer"></div>
+                        <div class="numb">
+                            0%
+                        </div>
+                        <div class="numb-title">
+                            현재 1위 유형
+                        </div>
+                        <div class="circle">
+                            <div class="fixed-dot">
+                                <span></span>
+                            </div>
+                            <div class="dot">
+                                <span></span>
+                            </div>
+                            <div class="bar left">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="bar right">
+                                <div class="progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- 결과 공유하기 -->
+        <section class="s1">
+            <span class="subTitle">결과 공유하기</span>
+            <ul class="s2">
+                <li><a href="javascript:shareKakaotalk();" class="kakaotalk"></a></li>
+                <li><a href="javascript:shareFacebook();" class="facebook"></a></li>
+                <li><a href="javascript:shareTwitter();" class="twitter"></a></li>
+                <li><a href="javascript:shareBand();" class="band"></a></li>
+                <li><a href="../imgs/instagram_download_img.png" class="instagram" download="나의 영화 캐릭터 유형은?.png"></a></li>
+            </ul>
+        </section>
+
+        <!-- 추천 영화 -->
+        <section class="m1">
+            <span class="subTitle">추천 영화</span>
+            <ul class="m2">
+                <li>
+                    <img class="movie-01"></img>
+                </li>
+                <li>
+                    <img class="movie-02"></img>
+                </li>
+                <li>
+                    <img class="movie-03"></img>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 테스트 다시하기 -->
+        <a href="home.html" class="restart"></a>
+
+        <!-- 댓글 -->
+        <section class="communication">
+
+            <!-- 댓글 작성 -->
+            <div class="add-comment">
+                <input type="text" class="nickname" id="nickname" name="nickname" placeholder="닉네임을 입력하세요.(2~10자)"
+                    onKeyup="checkInput(this.value, true, false, false, false);">
+                <div class="commentArea">
+                    <textarea name="comment-area" class="comment-area" id="comment-area" rows="18"
+                        placeholder="댓글을 입력하세요. (500자 내외)"
+                        onKeyup="checkInput(this.value, false, true, false, false);"></textarea>
+                    <span id="comment_count">(0/500)</span>
+                </div>
+                <div class="add-comment-pw">
+                    <input type="password" class="password" id="password" name="password"
+                        placeholder="비밀번호를 입력하세요.(숫자만 4~20자)" onKeyup="checkInput(this.value, false, false, true, false);">
+                    <button type="submit" class="wrtie-comment-btn" id="commentInit" name="commentInit"
+                        onclick="commentWrite()"></button>
+                </div>
+            </div>
+
+
+            <div class="p1"></div>
+
+            <!-- 댓글 창 보여주기 -->
+            <div class="show-comment">
+
+            </div>
+
+            <!-- 신고 모달 -->
+            <div class="report-modal">
+                <div class="report-modal-container">
+                    <h2>신고</h2>
+                    <!-- <img src="" alt="" class="report-modal-img"> -->
+
+                    <div class="input-area">
+                        <select name="신고유형" id="subject">
+                            <option value="">신고유형</option>
+                            <option value="ABUSE">욕설/비하</option>
+                            <option value="PORNOGRAPHY">음란물/불건전한 대화</option>
+                            <option value="COMMERCIAL">상업적 광고/판매</option>
+                            <option value="PAPERING">낚시/도배</option>
+                            <option value="DISPUTE">지나친 정치/종교 논쟁</option>
+                            <option value="PROMOTION">불법 홍보</option>
+                        </select>
+
+                        <div class="reportArea">
+                            <textarea name="description" class="description" id="description" rows="18"
+                            placeholder="신고 내용을 적어주세요. (500자 내외)"
+                            onKeyup="checkInput(this.value, false, false, false, true);"></textarea>
+                            <span id="report_count">(0/500)</span>
+                        </div>
+
+                        <div class="btns">
+                            <button id="submit" onclick="sendReport()">제출</button>
+                            <button id="cancle" onclick="closeReportModal(false)">취소</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지 넘기기 -->
+            <div class="comment-pages" id="comment-pages">
+            </div>
+
+        </section>
+
+
+    </div>
+
+    <div class="fb-quote"></div>
+</body>
+
+</html>
